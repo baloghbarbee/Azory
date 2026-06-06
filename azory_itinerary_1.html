@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azory · 21–28 júla 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ocean: #1a4a6b;
+    --ocean-light: #2d6a9a;
+    --sand: #f5f0e8;
+    --sand-dark: #e8e0d0;
+    --green: #2d5a3d;
+    --green-light: #4a8c5c;
+    --lava: #8b3a1e;
+    --warm: #c4622a;
+    --gold: #c9932a;
+    --text: #1c1c1c;
+    --muted: #6b6560;
+    --white: #fefcf9;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--ocean);
+    color: var(--white);
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 40px;
+    background: var(--sand);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .header-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  header p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    opacity: 0.75;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  .day-card {
+    background: var(--white);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    border: 1px solid var(--sand-dark);
+    transition: box-shadow 0.2s;
+  }
+
+  .day-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .day-header:hover {
+    background: #faf7f2;
+  }
+
+  .day-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .day-titles { flex: 1; }
+
+  .day-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .day-theme {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 2px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .day-chevron {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+
+  .day-chevron svg {
+    width: 16px; height: 16px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .day-card.open .day-chevron {
+    transform: rotate(180deg);
+  }
+
+  .day-body {
+    display: none;
+    border-top: 1px solid var(--sand-dark);
+    padding: 0;
+  }
+
+  .day-card.open .day-body {
+    display: block;
+  }
+
+  .slot {
+    display: flex;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--sand-dark);
+    align-items: flex-start;
+  }
+
+  .slot:last-of-type {
+    border-bottom: none;
+  }
+
+  .slot-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .slot-time {
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-top: 1px;
+    width: 40px;
+    flex-shrink: 0;
+    padding-top: 3px;
+  }
+
+  .slot-content { flex: 1; }
+
+  .slot-title {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .slot-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 3px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .tag-row {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .t-swim { background: #d6f0f5; color: #0a5a6e; }
+  .t-views { background: #fff3c4; color: #7a5500; }
+  .t-food { background: #ffe0ec; color: #7a1040; }
+  .t-nature { background: #d8f5d0; color: #1a5020; }
+  .t-culture { background: #fde8c8; color: #7a3a00; }
+  .t-drive { background: #e8e8e8; color: #3a3a3a; }
+  .t-must { background: #2d1a0a; color: #f5c87a; }
+
+  .tip-box {
+    margin: 0 20px 16px;
+    background: #f0f7ff;
+    border-left: 3px solid var(--ocean-light);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    color: var(--ocean);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .tip-box strong {
+    font-weight: 500;
+  }
+
+  /* day color themes */
+  .dn-1 { background: #dde8f5; color: #0c447c; }
+  .dn-2 { background: #ddf0e4; color: #1a4d2a; }
+  .dn-3 { background: #fdecd8; color: #7a3a0a; }
+  .dn-4 { background: #ece8f8; color: #3a2a7a; }
+  .dn-5 { background: #ddf0e4; color: #1a4d2a; }
+  .dn-6 { background: #fce8e8; color: #7a1a1a; }
+  .dn-7 { background: #ededec; color: #3a3a38; }
+
+  .legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding: 14px 16px;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--sand-dark);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>São Miguel<br>Azory</h1>
+    <p>21 – 28 júla 2026 · 7 nocí</p>
+    <div class="pills">
+      <span class="pill">✈ príchod 21.7. okolo obeda</span>
+      <span class="pill">✈ odchod 28.7. o 14:00</span>
+      <span class="pill">🚗 auto nutnosť</span>
+      <span class="pill">🍵 čajové plantáže ✓</span>
+      <span class="pill">🥃 rumáreň ✓</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#0a5a6e"></div> kúpanie</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7a5500"></div> výhľad</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#1a5020"></div> príroda</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7a1040"></div> jedlo</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7a3a00"></div> kultúra</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#2d1a0a"></div> must-do</div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-card open" id="d1">
+    <div class="day-header" onclick="toggle('d1')">
+      <div class="day-num dn-1">1</div>
+      <div class="day-titles">
+        <div class="day-name">21. júla (utorok) · Príchod</div>
+        <div class="day-theme">západ ostrova · prvý kontakt s Atlantikom</div>
+      </div>
+      <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="day-body">
+      <div class="slot">
+        <div class="slot-time">13:00</div>
+        <div class="slot-icon" style="background:#dde8f5">✈</div>
+        <div class="slot-content">
+          <div class="slot-title">Pristátie & check-in</div>
+          <div class="slot-desc">Ubytovanie v Ponta Delgada. Cestou z letiska zastávka v supermarkete na zásoby.</div>
+          <div class="tag-row"><span class="tag t-drive">trasa</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">15:30</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌊</div>
+        <div class="slot-content">
+          <div class="slot-title">Piscinas Naturais Caneiros</div>
+          <div class="slot-desc">Prírodné lávové bazény s atlantickou vodou. Prvé kúpanie na ostrove. (4.5★ · 1 176 recenzií)</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">18:00</div>
+        <div class="slot-icon" style="background:#dde8f5">🔦</div>
+        <div class="slot-content">
+          <div class="slot-title">Farol da Ferraria</div>
+          <div class="slot-desc">Maják na čiernych lávových útesoch – západ slnka nad Atlantikom.</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">20:00</div>
+        <div class="slot-icon" style="background:#fdecd8">🍽</div>
+        <div class="slot-content">
+          <div class="slot-title">Večera vonku – prvý večer</div>
+          <div class="slot-desc">Prvý večer si odpusťte varenie. Tasca – A Tasca (tradičná azorská kuchyňa, Ponta Delgada centrum).</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
+        </div>
+      </div>
+      <div class="tip-box"><strong>Tip:</strong> Z letiska do Ponta Delgada ~15 min. Na západ ostrova ďalších ~30 min po EN1-1A.</div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card" id="d2">
+    <div class="day-header" onclick="toggle('d2')">
+      <div class="day-num dn-2">2</div>
+      <div class="day-titles">
+        <div class="day-name">22. júla (streda) · Sete Cidades</div>
+        <div class="day-theme">dvojfarebné jazerá · kráľovná ostrova</div>
+      </div>
+      <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="day-body">
+      <div class="slot">
+        <div class="slot-time">8:30</div>
+        <div class="slot-icon" style="background:#dde8f5">👁</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro da Vista do Rei</div>
+          <div class="slot-desc">Najslávnejší výhľad na Azoroch – jedno jazero modré, druhé zelené. (4.8★ · 12 258 recenzií)</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">10:00</div>
+        <div class="slot-icon" style="background:#dde8f5">🏔</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro das Cumeeiras</div>
+          <div class="slot-desc">Druhý výhľad na kalderu z opačnej strany. (4.8★ · 326 recenzií)</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">11:30</div>
+        <div class="slot-icon" style="background:#ddf0e4">💐</div>
+        <div class="slot-content">
+          <div class="slot-title">Estrada Hortênsia & Lagoa de Santiago</div>
+          <div class="slot-desc">Scenic drive lemovaný fialovými hortenziami. Miradouro da Lagoa de Santiago (4.7★ · 1 271 recenzií).</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-views">výhľad</span><span class="tag t-drive">trasa</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">14:00</div>
+        <div class="slot-icon" style="background:#fdecd8">🍴</div>
+        <div class="slot-content">
+          <div class="slot-title">Obed – Restaurante Sete Cidades</div>
+          <div class="slot-desc">Priamo pri jazere. Jednoduchá lokálna kuchyňa – polievka, čerstvý chlieb, tuniak. Alternatíva: Restaurante Lagoa Azul.</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">16:00</div>
+        <div class="slot-icon" style="background:#ddf0e4">🏖</div>
+        <div class="slot-content">
+          <div class="slot-title">Pláž São Roque</div>
+          <div class="slot-desc">Popoludňajší relax pri mori.</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span></div>
+        </div>
+      </div>
+      <div class="tip-box"><strong>Tip:</strong> Choď čo najskôr ráno – Vista do Rei sa popoludní zahmlia. Sete Cidades je ~20 km od Ponta Delgada.</div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card" id="d3">
+    <div class="day-header" onclick="toggle('d3')">
+      <div class="day-num dn-3">3</div>
+      <div class="day-titles">
+        <div class="day-name">23. júla (štvrtok) · Čaj & termy</div>
+        <div class="day-theme">Gorreana · čajové plantáže · Caldeiras</div>
+      </div>
+      <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="day-body">
+      <div class="slot">
+        <div class="slot-time">9:00</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌿</div>
+        <div class="slot-content">
+          <div class="slot-title">Gorreana Tea Factory</div>
+          <div class="slot-desc">Jediná čajová plantáž v Európe – prehliadka terás, degustácia čerstvého čaju. Vstup zadarmo. Kúpiš priamo od výrobcu.</div>
+          <div class="tag-row"><span class="tag t-culture">kultúra</span><span class="tag t-nature">príroda</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">11:00</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌋</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro da Lagoa do Fogo</div>
+          <div class="slot-desc">Krátér s vulkanickým jazerom uprostred ostrova. Jeden z najkrajších výhľadov. Voliteľný trek dolu k jazeru (2 hod).</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">13:30</div>
+        <div class="slot-icon" style="background:#fdecd8">🍽</div>
+        <div class="slot-content">
+          <div class="slot-title">Obed – Ribeira Grande</div>
+          <div class="slot-desc">Restaurante Beira Mar alebo O Miroma pri centre Ribeira Grande – čerstvé ryby, lokálny syr. ~30 min od Lagoa do Fogo.</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">15:00</div>
+        <div class="slot-icon" style="background:#ddf0e4">♨️</div>
+        <div class="slot-content">
+          <div class="slot-title">Termas das Caldeiras</div>
+          <div class="slot-desc">Prírodné sírnaté termálne kúpele. Teplá voda priamo z vulkánu.</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">17:30</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌊</div>
+        <div class="slot-content">
+          <div class="slot-title">Praia da Viola</div>
+          <div class="slot-desc">Pláž na severe ostrova – pokojnejšia oblasť.</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span></div>
+        </div>
+      </div>
+      <div class="tip-box"><strong>Tip:</strong> Gorreana je otvorená aj bez rezervácie. Vezmi si domov čaj Green Pekoe – inde ho nekúpiš.</div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card" id="d4">
+    <div class="day-header" onclick="toggle('d4')">
+      <div class="day-num dn-4">4</div>
+      <div class="day-titles">
+        <div class="day-name">24. júla (piatok) · Furnas & rumáreň</div>
+        <div class="day-theme">sopečné jedlo · destileria · termálna lagúna</div>
+      </div>
+      <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="day-body">
+      <div class="slot">
+        <div class="slot-time">9:00</div>
+        <div class="slot-icon" style="background:#ece8f8">🌋</div>
+        <div class="slot-content">
+          <div class="slot-title">Furnas – jazero & fumaroly</div>
+          <div class="slot-desc">Aktívne sopečné bubliny pri jazere. Caldeiras com cozido – hrnce zakopané priamo v zemi.</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">11:00</div>
+        <div class="slot-icon" style="background:#fdecd8">🥃</div>
+        <div class="slot-content">
+          <div class="slot-title">Destilaria Azorean Spirit / rumáreň</div>
+          <div class="slot-desc">Na Azoroch sa vyrába ginjeinha (čerešňový likér) a brandy. Odporúčame Fábrica de Licores Brum alebo Quinta das Vinhas v okolí – degustácia lokálnych destilátov.</div>
+          <div class="tag-row"><span class="tag t-culture">kultúra</span><span class="tag t-food">jedlo</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">12:30</div>
+        <div class="slot-icon" style="background:#fdecd8">🍲</div>
+        <div class="slot-content">
+          <div class="slot-title">Obed – Cozido das Furnas</div>
+          <div class="slot-desc">Tradičný guláš varený 6–8 hodín geotermálnou energiou priamo v zemi. Tony's Restaurant alebo Restaurante Zé do Pico – oboje vo Furnas. REZERVUJ VOPRED.</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">14:30</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌺</div>
+        <div class="slot-content">
+          <div class="slot-title">Parque Terra Nostra</div>
+          <div class="slot-desc">Botanická záhrada s termálnou lagúnou (žltá/oranžová voda, bohatá na železo). Kúpanie v bazéne v záhrade.</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">17:00</div>
+        <div class="slot-icon" style="background:#dde8f5">🏔</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro do Lombo dos Milhos</div>
+          <div class="slot-desc">Výhľad na Furnas a dolinu zhora.</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span></div>
+        </div>
+      </div>
+      <div class="tip-box"><strong>Tip:</strong> Cozido das Furnas aj Terra Nostra rezervuj online vopred – oba sú veľmi obľúbené. Oblečenie po kúpaní v Terra Nostra zafarbí!</div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="day-card" id="d5">
+    <div class="day-header" onclick="toggle('d5')">
+      <div class="day-num dn-5">5</div>
+      <div class="day-titles">
+        <div class="day-name">25. júla (sobota) · Oslíky & východ</div>
+        <div class="day-theme">rescued donkeys · Nordeste · kaskády</div>
+      </div>
+      <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="day-body">
+      <div class="slot">
+        <div class="slot-time">9:30</div>
+        <div class="slot-icon" style="background:#f0e8d8">🫏</div>
+        <div class="slot-content">
+          <div class="slot-title">Hike with happy rescued donkeys</div>
+          <div class="slot-desc">2-hodinová prechádzka so zachránenými oslíkmi. Organizuje Bethany. Už objednané ✓</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">12:00</div>
+        <div class="slot-icon" style="background:#fdecd8">🍴</div>
+        <div class="slot-content">
+          <div class="slot-title">Obed – Nordeste</div>
+          <div class="slot-desc">Restaurante O Miradouro alebo Café Nordeste priamo v dedine – čerstvé ryby, domáce polievky. Pokojné miesto bez turistov.</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">13:30</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌲</div>
+        <div class="slot-content">
+          <div class="slot-title">Parque Natural da Ribeira dos Caldeirões</div>
+          <div class="slot-desc">Národný park – vodopády, staré mlyny, mosty, endemická vegetácia. Voľný vstup.</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-culture">kultúra</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">15:00</div>
+        <div class="slot-icon" style="background:#dde8f5">🔭</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro da Ponta do Arnel</div>
+          <div class="slot-desc">Maják na dramatických útesoch – najvýchodnejší cíp ostrova. Cascata da Ponta do Arnel neďaleko.</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">17:00</div>
+        <div class="slot-icon" style="background:#dde8f5">🌸</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro da Ponta do Sossego</div>
+          <div class="slot-desc">Záhradný výhľad s hortenziami, vidieť až k horizontu – možno veľryby.</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="tip-box"><strong>Tip:</strong> Pico da Vara (2 hod trek) sme z tohto dňa vyradili – po oslíkoch a výlete na východ bude deň dosť plný. Dá sa zaradiť skôr ráno v iný deň ak bude chuť.</div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card" id="d6">
+    <div class="day-header" onclick="toggle('d6')">
+      <div class="day-num dn-6">6</div>
+      <div class="day-titles">
+        <div class="day-name">26. júla (nedeľa) · Sever & Santa Bárbara</div>
+        <div class="day-theme">surf · TukáTulá · Ribeira Grande</div>
+      </div>
+      <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="day-body">
+      <div class="slot">
+        <div class="slot-time">9:30</div>
+        <div class="slot-icon" style="background:#fdecd8">☕</div>
+        <div class="slot-content">
+          <div class="slot-title">Raňajky – Pão com Chouriço</div>
+          <div class="slot-desc">Miestna pekáreň v Ribeira Grande – čerstvý chlieb s čorizom, pastel de nata, lokálna káva.</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">11:00</div>
+        <div class="slot-icon" style="background:#ece8f8">🏛</div>
+        <div class="slot-content">
+          <div class="slot-title">Ribeira Grande – historické centrum</div>
+          <div class="slot-desc">Starý most, koloniálna architektúra, miestny trh. Cascata das Lombadas a Vale das Lombadas neďaleko.</div>
+          <div class="tag-row"><span class="tag t-culture">kultúra</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">10:00</div>
+        <div class="slot-icon" style="background:#d6f0f5">🏄</div>
+        <div class="slot-content">
+          <div class="slot-title">Surf – Praia de Santa Bárbara</div>
+          <div class="slot-desc">Jedna z najlepších surfových pláží na Azoroch – 1,2 km čierneho piesku. Surf škola priamo na pláži pre začiatočníkov. Silné prúdy – sleduj vlajky!</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span><span class="tag t-nature">príroda</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">13:00</div>
+        <div class="slot-icon" style="background:#fdecd8">🍹</div>
+        <div class="slot-content">
+          <div class="slot-title">Obed – TukáTulá Beach Bar</div>
+          <div class="slot-desc">Priamo na pláži – tapas, čerstvé morské plody, koktaily s výhľadom na surferov. (4.3★ · 870 recenzií, #2 v Ribeira Grande). REZERVUJ 2 DNI VOPRED: tukatulabar@gmail.com · +351 296 477 647</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">16:30</div>
+        <div class="slot-icon" style="background:#dde8f5">🌄</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro de Santa Iria</div>
+          <div class="slot-desc">Výhľad na sever, dramatické clify s hortenziami.</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">19:00</div>
+        <div class="slot-icon" style="background:#ddf0e4">🏠</div>
+        <div class="slot-content">
+          <div class="slot-title">Varenie doma – Ponta Delgada</div>
+          <div class="slot-desc">Pokojný večer doma. Z trhov: čerstvé lapas, lokálny syr, Biscoitos víno.</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day-card" id="d7">
+    <div class="day-header" onclick="toggle('d7')">
+      <div class="day-num dn-7">7</div>
+      <div class="day-titles">
+        <div class="day-name">27. júla (pondelok) · Posledný deň</div>
+        <div class="day-theme">nákupy · posledná pláž · západ</div>
+      </div>
+      <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="day-body">
+      <div class="slot">
+        <div class="slot-time">9:00</div>
+        <div class="slot-icon" style="background:#dde8f5">🏔</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro do Pico do Carvão</div>
+          <div class="slot-desc">Panoráma stredu ostrova – krátka zastávka.</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">10:30</div>
+        <div class="slot-icon" style="background:#dde8f5">🌿</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro da Grota do Inferno</div>
+          <div class="slot-desc">Dramatický výhľad do zelenej „Pekelnej tiesňavy".</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">12:00</div>
+        <div class="slot-icon" style="background:#fdecd8">🛍</div>
+        <div class="slot-content">
+          <div class="slot-title">Obed & nákupy – Ponta Delgada</div>
+          <div class="slot-desc">Mercado da Graça – obed priamo na trhu (čerstvé suroviny, lokálny syr, čorizos). Potom nákupy: čaj Gorreana, ginjeinha, Biscoitos víno.</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span><span class="tag t-culture">kultúra</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">15:00</div>
+        <div class="slot-icon" style="background:#ddf0e4">🏖</div>
+        <div class="slot-content">
+          <div class="slot-title">Praia de Água de Alto</div>
+          <div class="slot-desc">Jedna z najlepších piesočnatých pláží ostrova. Posledné kúpanie.</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">19:00</div>
+        <div class="slot-icon" style="background:#fdecd8">🍷</div>
+        <div class="slot-content">
+          <div class="slot-title">Varenie doma – záverečný večer</div>
+          <div class="slot-desc">Posledný večer doma, rozlúčkový toast s lokálnym vínom z Biscoitos.</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
+        </div>
+      </div>
+      <div class="tip-box"><strong>28. júla:</strong> Pokojné ráno, odchod na letisko. Let o 14:00 → odporúčame byť na letisku o 12:00.</div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function toggle(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
