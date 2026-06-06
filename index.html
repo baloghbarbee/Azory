@@ -1,3 +1,4 @@
+Azory itinerary · HTML
 <!DOCTYPE html>
 <html lang="sk">
 <head>
@@ -7,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   :root {
     --ocean: #1a4a6b;
     --ocean-light: #2d6a9a;
@@ -22,14 +23,14 @@
     --muted: #6b6560;
     --white: #fefcf9;
   }
-
+ 
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--sand);
     color: var(--text);
     min-height: 100vh;
   }
-
+ 
   header {
     background: var(--ocean);
     color: var(--white);
@@ -37,7 +38,7 @@
     position: relative;
     overflow: hidden;
   }
-
+ 
   header::after {
     content: '';
     position: absolute;
@@ -47,14 +48,14 @@
     background: var(--sand);
     clip-path: ellipse(55% 100% at 50% 100%);
   }
-
+ 
   .header-inner {
     max-width: 700px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
   }
-
+ 
   header h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 5vw, 3rem);
@@ -63,7 +64,7 @@
     line-height: 1.1;
     margin-bottom: 0.5rem;
   }
-
+ 
   header p {
     font-size: 0.95rem;
     font-weight: 300;
@@ -71,14 +72,14 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
-
+ 
   .pills {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
     margin-top: 1.5rem;
   }
-
+ 
   .pill {
     background: rgba(255,255,255,0.12);
     border: 1px solid rgba(255,255,255,0.2);
@@ -89,13 +90,13 @@
     font-weight: 400;
     letter-spacing: 0.03em;
   }
-
+ 
   main {
     max-width: 700px;
     margin: 0 auto;
     padding: 2rem 1.5rem 4rem;
   }
-
+ 
   .day-card {
     background: var(--white);
     border-radius: 16px;
@@ -104,11 +105,11 @@
     border: 1px solid var(--sand-dark);
     transition: box-shadow 0.2s;
   }
-
+ 
   .day-card:hover {
     box-shadow: 0 4px 20px rgba(0,0,0,0.07);
   }
-
+ 
   .day-header {
     display: flex;
     align-items: center;
@@ -118,11 +119,11 @@
     user-select: none;
     transition: background 0.15s;
   }
-
+ 
   .day-header:hover {
     background: #faf7f2;
   }
-
+ 
   .day-num {
     width: 44px;
     height: 44px;
@@ -135,16 +136,16 @@
     font-weight: 600;
     flex-shrink: 0;
   }
-
+ 
   .day-titles { flex: 1; }
-
+ 
   .day-name {
     font-size: 1rem;
     font-weight: 500;
     color: var(--text);
     line-height: 1.2;
   }
-
+ 
   .day-theme {
     font-size: 0.8rem;
     color: var(--muted);
@@ -152,7 +153,7 @@
     font-weight: 300;
     letter-spacing: 0.02em;
   }
-
+ 
   .day-chevron {
     width: 24px;
     height: 24px;
@@ -163,7 +164,7 @@
     transition: transform 0.25s;
     flex-shrink: 0;
   }
-
+ 
   .day-chevron svg {
     width: 16px; height: 16px;
     stroke: currentColor;
@@ -172,21 +173,21 @@
     stroke-linecap: round;
     stroke-linejoin: round;
   }
-
+ 
   .day-card.open .day-chevron {
     transform: rotate(180deg);
   }
-
+ 
   .day-body {
     display: none;
     border-top: 1px solid var(--sand-dark);
     padding: 0;
   }
-
+ 
   .day-card.open .day-body {
     display: block;
   }
-
+ 
   .slot {
     display: flex;
     gap: 16px;
@@ -194,11 +195,11 @@
     border-bottom: 1px solid var(--sand-dark);
     align-items: flex-start;
   }
-
+ 
   .slot:last-of-type {
     border-bottom: none;
   }
-
+ 
   .slot-icon {
     width: 32px;
     height: 32px;
@@ -210,7 +211,7 @@
     flex-shrink: 0;
     margin-top: 1px;
   }
-
+ 
   .slot-time {
     font-size: 0.72rem;
     color: var(--muted);
@@ -221,16 +222,16 @@
     flex-shrink: 0;
     padding-top: 3px;
   }
-
+ 
   .slot-content { flex: 1; }
-
+ 
   .slot-title {
     font-size: 0.92rem;
     font-weight: 500;
     color: var(--text);
     line-height: 1.3;
   }
-
+ 
   .slot-desc {
     font-size: 0.82rem;
     color: var(--muted);
@@ -238,14 +239,14 @@
     line-height: 1.5;
     font-weight: 300;
   }
-
+ 
   .tag-row {
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
     margin-top: 6px;
   }
-
+ 
   .tag {
     font-size: 0.7rem;
     padding: 2px 8px;
@@ -253,7 +254,7 @@
     font-weight: 400;
     letter-spacing: 0.02em;
   }
-
+ 
   .t-swim { background: #d6f0f5; color: #0a5a6e; }
   .t-views { background: #fff3c4; color: #7a5500; }
   .t-food { background: #ffe0ec; color: #7a1040; }
@@ -261,7 +262,7 @@
   .t-culture { background: #fde8c8; color: #7a3a00; }
   .t-drive { background: #e8e8e8; color: #3a3a3a; }
   .t-must { background: #2d1a0a; color: #f5c87a; }
-
+ 
   .tip-box {
     margin: 0 20px 16px;
     background: #f0f7ff;
@@ -273,11 +274,11 @@
     line-height: 1.5;
     font-weight: 300;
   }
-
+ 
   .tip-box strong {
     font-weight: 500;
   }
-
+ 
   /* day color themes */
   .dn-1 { background: #dde8f5; color: #0c447c; }
   .dn-2 { background: #ddf0e4; color: #1a4d2a; }
@@ -286,7 +287,7 @@
   .dn-5 { background: #ddf0e4; color: #1a4d2a; }
   .dn-6 { background: #fce8e8; color: #7a1a1a; }
   .dn-7 { background: #ededec; color: #3a3a38; }
-
+ 
   .legend {
     display: flex;
     gap: 10px;
@@ -297,7 +298,7 @@
     border-radius: 12px;
     border: 1px solid var(--sand-dark);
   }
-
+ 
   .legend-item {
     display: flex;
     align-items: center;
@@ -305,7 +306,7 @@
     font-size: 0.75rem;
     color: var(--muted);
   }
-
+ 
   .legend-dot {
     width: 8px; height: 8px;
     border-radius: 50%;
@@ -313,7 +314,7 @@
 </style>
 </head>
 <body>
-
+ 
 <header>
   <div class="header-inner">
     <h1>São Miguel<br>Azory</h1>
@@ -327,9 +328,9 @@
     </div>
   </div>
 </header>
-
+ 
 <main>
-
+ 
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:#0a5a6e"></div> kúpanie</div>
     <div class="legend-item"><div class="legend-dot" style="background:#7a5500"></div> výhľad</div>
@@ -338,7 +339,7 @@
     <div class="legend-item"><div class="legend-dot" style="background:#7a3a00"></div> kultúra</div>
     <div class="legend-item"><div class="legend-dot" style="background:#2d1a0a"></div> must-do</div>
   </div>
-
+ 
   <!-- DAY 1 -->
   <div class="day-card open" id="d1">
     <div class="day-header" onclick="toggle('d1')">
@@ -389,14 +390,65 @@
       <div class="tip-box"><strong>Tip:</strong> Z letiska do Ponta Delgada ~15 min. Na západ ostrova ďalších ~30 min po EN1-1A.</div>
     </div>
   </div>
-
+ 
   <!-- DAY 2 -->
   <div class="day-card" id="d2">
     <div class="day-header" onclick="toggle('d2')">
       <div class="day-num dn-2">2</div>
       <div class="day-titles">
         <div class="day-name">22. júla (streda) · Sete Cidades</div>
-        <div class="day-theme">dvojfarebné jazerá · kráľovná ostrova</div>
+        <div class="day-theme">kráterový trek · dvojfarebné jazerá · hortenzie</div>
+      </div>
+      <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="day-body">
+      <div class="slot">
+        <div class="slot-time">8:00</div>
+        <div class="slot-icon" style="background:#ddf0e4">🥾</div>
+        <div class="slot-content">
+          <div class="slot-title">Trek – kráterový okruh Sete Cidades</div>
+          <div class="slot-desc">PR01 SMI – 12 km okruh po hrane kaldery. Začína od Vista do Rei, prechádza Boca do Inferno, lesy, hortenzie a sopečný terén. Výhľady na obe jazerá z rôznych uhlov. ~3,5 hod chôdze.</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-views">výhľad</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">12:00</div>
+        <div class="slot-icon" style="background:#fdecd8">🍴</div>
+        <div class="slot-content">
+          <div class="slot-title">Obed – Restaurante Sete Cidades</div>
+          <div class="slot-desc">Priamo pri jazere. Lokálna polievka, čerstvý chlieb, tuniak. Alternatíva: Restaurante Lagoa Azul.</div>
+          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">14:00</div>
+        <div class="slot-icon" style="background:#ddf0e4">💐</div>
+        <div class="slot-content">
+          <div class="slot-title">Estrada Hortênsia & Miradouro da Lagoa de Santiago</div>
+          <div class="slot-desc">Scenic drive lemovaný fialovými hortenziami, zastávka pri jazere. (4.7★ · 1 271 recenzií)</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-views">výhľad</span><span class="tag t-drive">trasa</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">16:00</div>
+        <div class="slot-icon" style="background:#d6f0f5">🏖</div>
+        <div class="slot-content">
+          <div class="slot-title">Pláž São Roque</div>
+          <div class="slot-desc">Zaslúžený oddych pri mori po trekku.</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span></div>
+        </div>
+      </div>
+      <div class="tip-box"><strong>Tip:</strong> Trek začni čo najskôr ráno – Vista do Rei sa popoludní zahmlia. Sete Cidades je ~20 km od Ponta Delgada. Pevná obuv nutnosť.</div>
+    </div>
+  </div>
+ 
+  <!-- DAY 3 -->
+  <div class="day-card" id="d3">
+    <div class="day-header" onclick="toggle('d3')">
+      <div class="day-num dn-3">3</div>
+      <div class="day-titles">
+        <div class="day-name">23. júla (štvrtok) · Výhľady, jazero & džungľa</div>
+        <div class="day-theme">Vista do Rei · Lagoa do Fogo · Caldeira Velha</div>
       </div>
       <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </div>
@@ -406,110 +458,50 @@
         <div class="slot-icon" style="background:#dde8f5">👁</div>
         <div class="slot-content">
           <div class="slot-title">Miradouro da Vista do Rei</div>
-          <div class="slot-desc">Najslávnejší výhľad na Azoroch – jedno jazero modré, druhé zelené. (4.8★ · 12 258 recenzií)</div>
+          <div class="slot-desc">Najslávnejší výhľad na Azoroch – dvojfarebné jazerá Sete Cidades. (4.8★ · 12 258 recenzií) Choď skoro – popoludní zahmlia.</div>
           <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-must">must-do</span></div>
         </div>
       </div>
       <div class="slot">
-        <div class="slot-time">10:00</div>
-        <div class="slot-icon" style="background:#dde8f5">🏔</div>
+        <div class="slot-time">9:30</div>
+        <div class="slot-icon" style="background:#dde8f5">🌿</div>
         <div class="slot-content">
-          <div class="slot-title">Miradouro das Cumeeiras</div>
-          <div class="slot-desc">Druhý výhľad na kalderu z opačnej strany. (4.8★ · 326 recenzií)</div>
-          <div class="tag-row"><span class="tag t-views">výhľad</span></div>
-        </div>
-      </div>
-      <div class="slot">
-        <div class="slot-time">11:30</div>
-        <div class="slot-icon" style="background:#ddf0e4">💐</div>
-        <div class="slot-content">
-          <div class="slot-title">Estrada Hortênsia & Lagoa de Santiago</div>
-          <div class="slot-desc">Scenic drive lemovaný fialovými hortenziami. Miradouro da Lagoa de Santiago (4.7★ · 1 271 recenzií).</div>
-          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-views">výhľad</span><span class="tag t-drive">trasa</span></div>
-        </div>
-      </div>
-      <div class="slot">
-        <div class="slot-time">14:00</div>
-        <div class="slot-icon" style="background:#fdecd8">🍴</div>
-        <div class="slot-content">
-          <div class="slot-title">Obed – Restaurante Sete Cidades</div>
-          <div class="slot-desc">Priamo pri jazere. Jednoduchá lokálna kuchyňa – polievka, čerstvý chlieb, tuniak. Alternatíva: Restaurante Lagoa Azul.</div>
-          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
-        </div>
-      </div>
-      <div class="slot">
-        <div class="slot-time">16:00</div>
-        <div class="slot-icon" style="background:#ddf0e4">🏖</div>
-        <div class="slot-content">
-          <div class="slot-title">Pláž São Roque</div>
-          <div class="slot-desc">Popoludňajší relax pri mori.</div>
-          <div class="tag-row"><span class="tag t-swim">kúpanie</span></div>
-        </div>
-      </div>
-      <div class="tip-box"><strong>Tip:</strong> Choď čo najskôr ráno – Vista do Rei sa popoludní zahmlia. Sete Cidades je ~20 km od Ponta Delgada.</div>
-    </div>
-  </div>
-
-  <!-- DAY 3 -->
-  <div class="day-card" id="d3">
-    <div class="day-header" onclick="toggle('d3')">
-      <div class="day-num dn-3">3</div>
-      <div class="day-titles">
-        <div class="day-name">23. júla (štvrtok) · Čaj & termy</div>
-        <div class="day-theme">Gorreana · čajové plantáže · Caldeiras</div>
-      </div>
-      <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
-    </div>
-    <div class="day-body">
-      <div class="slot">
-        <div class="slot-time">9:00</div>
-        <div class="slot-icon" style="background:#ddf0e4">🌿</div>
-        <div class="slot-content">
-          <div class="slot-title">Gorreana Tea Factory</div>
-          <div class="slot-desc">Jediná čajová plantáž v Európe – prehliadka terás, degustácia čerstvého čaju. Vstup zadarmo. Kúpiš priamo od výrobcu.</div>
-          <div class="tag-row"><span class="tag t-culture">kultúra</span><span class="tag t-nature">príroda</span><span class="tag t-must">must-do</span></div>
-        </div>
-      </div>
-      <div class="slot">
-        <div class="slot-time">11:00</div>
-        <div class="slot-icon" style="background:#ddf0e4">🌋</div>
-        <div class="slot-content">
-          <div class="slot-title">Miradouro da Lagoa do Fogo</div>
-          <div class="slot-desc">Krátér s vulkanickým jazerom uprostred ostrova. Jeden z najkrajších výhľadov. Voliteľný trek dolu k jazeru (2 hod).</div>
+          <div class="slot-title">Miradouro da Grota do Inferno</div>
+          <div class="slot-desc">Dramatický výhľad do zelenej „Pekelnej tiesňavy" – ~10 min od Vista do Rei.</div>
           <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
         </div>
       </div>
       <div class="slot">
-        <div class="slot-time">13:30</div>
+        <div class="slot-time">10:30</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌋</div>
+        <div class="slot-content">
+          <div class="slot-title">Lagoa do Fogo – miradouro & krátky zostup</div>
+          <div class="slot-desc">Výhľad na vulkanické jazero v kráteri. Krátka neoficiálna trasa dolu k jazeru – 30–60 min, ľahká. ⚠️ Júl: prístup len kyvadlom 9:00–19:00 (5€/os) alebo príď pred 9:00 vlastným autom – zadarmo.</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span><span class="tag t-swim">kúpanie</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">13:00</div>
         <div class="slot-icon" style="background:#fdecd8">🍽</div>
         <div class="slot-content">
           <div class="slot-title">Obed – Ribeira Grande</div>
-          <div class="slot-desc">Restaurante Beira Mar alebo O Miroma pri centre Ribeira Grande – čerstvé ryby, lokálny syr. ~30 min od Lagoa do Fogo.</div>
+          <div class="slot-desc">Restaurante Beira Mar alebo O Miroma – čerstvé ryby, lokálny syr. ~20 min od Lagoa do Fogo.</div>
           <div class="tag-row"><span class="tag t-food">jedlo</span></div>
         </div>
       </div>
       <div class="slot">
         <div class="slot-time">15:00</div>
-        <div class="slot-icon" style="background:#ddf0e4">♨️</div>
+        <div class="slot-icon" style="background:#d6f0f5">♨️</div>
         <div class="slot-content">
-          <div class="slot-title">Termas das Caldeiras</div>
-          <div class="slot-desc">Prírodné sírnaté termálne kúpele. Teplá voda priamo z vulkánu.</div>
-          <div class="tag-row"><span class="tag t-swim">kúpanie</span><span class="tag t-nature">príroda</span></div>
+          <div class="slot-title">Caldeira Velha – termálne bazény v džungli</div>
+          <div class="slot-desc">4 prírodné bazény (25–38°C) skryté v pralese – vodopád, endemické paprade, železnatá voda. Vstup 10€. REZERVUJ čas online vopred.</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span><span class="tag t-nature">príroda</span><span class="tag t-must">must-do</span></div>
         </div>
       </div>
-      <div class="slot">
-        <div class="slot-time">17:30</div>
-        <div class="slot-icon" style="background:#ddf0e4">🌊</div>
-        <div class="slot-content">
-          <div class="slot-title">Praia da Viola</div>
-          <div class="slot-desc">Pláž na severe ostrova – pokojnejšia oblasť.</div>
-          <div class="tag-row"><span class="tag t-swim">kúpanie</span></div>
-        </div>
-      </div>
-      <div class="tip-box"><strong>Tip:</strong> Gorreana je otvorená aj bez rezervácie. Vezmi si domov čaj Green Pekoe – inde ho nekúpiš.</div>
+      <div class="tip-box"><strong>Tip:</strong> Vista do Rei → Grota do Inferno → Lagoa do Fogo je jedna logická trasa západ→stred. Lagoa do Fogo: príď pred 9:00 vlastným autom a obídete shuttle úplne. Caldeira Velha rezervuj vopred na parquesnaturais.azores.gov.pt.</div>
     </div>
   </div>
-
+ 
   <!-- DAY 4 -->
   <div class="day-card" id="d4">
     <div class="day-header" onclick="toggle('d4')">
@@ -523,11 +515,20 @@
     <div class="day-body">
       <div class="slot">
         <div class="slot-time">9:00</div>
-        <div class="slot-icon" style="background:#ece8f8">🌋</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌫</div>
         <div class="slot-content">
-          <div class="slot-title">Furnas – jazero & fumaroly</div>
-          <div class="slot-desc">Aktívne sopečné bubliny pri jazere. Caldeiras com cozido – hrnce zakopané priamo v zemi.</div>
-          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-must">must-do</span></div>
+          <div class="slot-title">Jardim Público da Courela & Caldeiras das Furnas</div>
+          <div class="slot-desc">Sopečné krátery priamo v centre dediny – teplota 70–100°C, sírne pary, surreálna hmla nad záhradou. Dva prírodné minerálne pramene na pitie (jeden horúci, jeden studený). OMIC múzeum vedľa – mapa pitných prameňov za 1,50€.</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-culture">kultúra</span><span class="tag t-must">must-do</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">10:30</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌋</div>
+        <div class="slot-content">
+          <div class="slot-title">Fumarolas Lagoa das Furnas & Parque da Grená</div>
+          <div class="slot-desc">Drevené mostíky nad bublajúcimi krátermi pri jazere – tu sa varia hrnce s Cozido, uvidíte to na vlastné oči. Parque da Grená (10€): 18 ha parku s trasami, vodopádmi a historickou villou z 1855. Vstup k fumarolám 3€.</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-culture">kultúra</span><span class="tag t-must">must-do</span></div>
         </div>
       </div>
       <div class="slot">
@@ -552,8 +553,8 @@
         <div class="slot-time">14:30</div>
         <div class="slot-icon" style="background:#ddf0e4">🌺</div>
         <div class="slot-content">
-          <div class="slot-title">Parque Terra Nostra</div>
-          <div class="slot-desc">Botanická záhrada s termálnou lagúnou (žltá/oranžová voda, bohatá na železo). Kúpanie v bazéne v záhrade.</div>
+          <div class="slot-title">Poça da Dona Beija – termálne bazény</div>
+          <div class="slot-desc">4 otvorené bazény (38–39°C) v tropickej záhrade pri potoku. Otvorené do 23:00 – ideálne popoludní alebo večer pod hviezdami. Vstup ~8€. Menej turistov ako Terra Nostra.</div>
           <div class="tag-row"><span class="tag t-swim">kúpanie</span><span class="tag t-nature">príroda</span></div>
         </div>
       </div>
@@ -566,10 +567,10 @@
           <div class="tag-row"><span class="tag t-views">výhľad</span></div>
         </div>
       </div>
-      <div class="tip-box"><strong>Tip:</strong> Cozido das Furnas aj Terra Nostra rezervuj online vopred – oba sú veľmi obľúbené. Oblečenie po kúpaní v Terra Nostra zafarbí!</div>
+      <div class="tip-box"><strong>Tip:</strong> Cozido das Furnas rezervuj VOPRED (Tony's / Zé do Pico). Poça da Dona Beija je otvorená do 23:00 – skvelá voľba po západe slnka pod hviezdami.</div>
     </div>
   </div>
-
+ 
   <!-- DAY 5 -->
   <div class="day-card" id="d5">
     <div class="day-header" onclick="toggle('d5')">
@@ -601,15 +602,24 @@
       </div>
       <div class="slot">
         <div class="slot-time">13:30</div>
-        <div class="slot-icon" style="background:#ddf0e4">🌲</div>
+        <div class="slot-icon" style="background:#ddf0e4">🥾</div>
         <div class="slot-content">
-          <div class="slot-title">Parque Natural da Ribeira dos Caldeirões</div>
-          <div class="slot-desc">Národný park – vodopády, staré mlyny, mosty, endemická vegetácia. Voľný vstup.</div>
-          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-culture">kultúra</span></div>
+          <div class="slot-title">Trek – Sanguinho & Salto do Prego</div>
+          <div class="slot-desc">PR09 SMI – 4,5 km, 2 hod, ľahší. Cez lesy k opustenému dedinčeku Sanguinho a krásnym vodopádom Salto do Prego. Začína vo Faial da Terra (~15 min od Nordeste).</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-views">výhľad</span></div>
         </div>
       </div>
       <div class="slot">
         <div class="slot-time">15:00</div>
+        <div class="slot-icon" style="background:#dde8f5">🌸</div>
+        <div class="slot-content">
+          <div class="slot-title">Miradouro da Ponta do Sossego</div>
+          <div class="slot-desc">Záhradný výhľad s hortenziami – najkrajší v slnečnom svetle. Možno veľryby na horizonte.</div>
+          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
+        </div>
+      </div>
+      <div class="slot">
+        <div class="slot-time">16:30</div>
         <div class="slot-icon" style="background:#dde8f5">🔭</div>
         <div class="slot-content">
           <div class="slot-title">Miradouro da Ponta do Arnel</div>
@@ -617,63 +627,54 @@
           <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
         </div>
       </div>
-      <div class="slot">
-        <div class="slot-time">17:00</div>
-        <div class="slot-icon" style="background:#dde8f5">🌸</div>
-        <div class="slot-content">
-          <div class="slot-title">Miradouro da Ponta do Sossego</div>
-          <div class="slot-desc">Záhradný výhľad s hortenziami, vidieť až k horizontu – možno veľryby.</div>
-          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
-        </div>
-      </div>
-      <div class="tip-box"><strong>Tip:</strong> Pico da Vara (2 hod trek) sme z tohto dňa vyradili – po oslíkoch a výlete na východ bude deň dosť plný. Dá sa zaradiť skôr ráno v iný deň ak bude chuť.</div>
+      <div class="tip-box"><strong>Tip:</strong> Salto do Prego je jeden z najkrajších vodopádov na ostrove a trail nie je preplnený. Topánky nutnosť – aj po oslíkoch ráno.</div>
     </div>
   </div>
-
+ 
   <!-- DAY 6 -->
   <div class="day-card" id="d6">
     <div class="day-header" onclick="toggle('d6')">
       <div class="day-num dn-6">6</div>
       <div class="day-titles">
-        <div class="day-name">26. júla (nedeľa) · Sever & Santa Bárbara</div>
-        <div class="day-theme">surf · TukáTulá · Ribeira Grande</div>
+        <div class="day-name">26. júla (nedeľa) · Sever – čaj, džungľa & surf</div>
+        <div class="day-theme">Janela do Inferno · Gorreana · Santa Bárbara · TukáTulá</div>
       </div>
       <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </div>
     <div class="day-body">
       <div class="slot">
-        <div class="slot-time">9:30</div>
-        <div class="slot-icon" style="background:#fdecd8">☕</div>
+        <div class="slot-time">8:00</div>
+        <div class="slot-icon" style="background:#ddf0e4">🥾</div>
         <div class="slot-content">
-          <div class="slot-title">Raňajky – Pão com Chouriço</div>
-          <div class="slot-desc">Miestna pekáreň v Ribeira Grande – čerstvý chlieb s čorizom, pastel de nata, lokálna káva.</div>
-          <div class="tag-row"><span class="tag t-food">jedlo</span></div>
+          <div class="slot-title">Trek – Janela do Inferno</div>
+          <div class="slot-desc">Okruhový trail cez začarovaný les, staré vodné tunely a akvadukty. Vrchol: vodopád vytekajúci z jaskyne – "Okno do Pekla". ~2,5 hod, ľahší. Vezmi čelovku na tunely.</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-culture">kultúra</span></div>
         </div>
       </div>
       <div class="slot">
-        <div class="slot-time">11:00</div>
-        <div class="slot-icon" style="background:#ece8f8">🏛</div>
+        <div class="slot-time">10:30</div>
+        <div class="slot-icon" style="background:#ddf0e4">🌿</div>
         <div class="slot-content">
-          <div class="slot-title">Ribeira Grande – historické centrum</div>
-          <div class="slot-desc">Starý most, koloniálna architektúra, miestny trh. Cascata das Lombadas a Vale das Lombadas neďaleko.</div>
-          <div class="tag-row"><span class="tag t-culture">kultúra</span><span class="tag t-nature">príroda</span></div>
+          <div class="slot-title">Gorreana Tea Factory</div>
+          <div class="slot-desc">Jediná čajová plantáž v Európe – prehliadka terás, degustácia čerstvého čaju. Vstup zadarmo. ~10 min od trekku. Kúp domov Green Pekoe – inde ho nekúpiš.</div>
+          <div class="tag-row"><span class="tag t-culture">kultúra</span><span class="tag t-nature">príroda</span><span class="tag t-must">must-do</span></div>
         </div>
       </div>
       <div class="slot">
-        <div class="slot-time">10:00</div>
+        <div class="slot-time">12:00</div>
         <div class="slot-icon" style="background:#d6f0f5">🏄</div>
         <div class="slot-content">
           <div class="slot-title">Surf – Praia de Santa Bárbara</div>
-          <div class="slot-desc">Jedna z najlepších surfových pláží na Azoroch – 1,2 km čierneho piesku. Surf škola priamo na pláži pre začiatočníkov. Silné prúdy – sleduj vlajky!</div>
+          <div class="slot-desc">1,2 km čierneho piesku, surf škola priamo na pláži pre začiatočníkov. Silné prúdy – sleduj vlajky!</div>
           <div class="tag-row"><span class="tag t-swim">kúpanie</span><span class="tag t-nature">príroda</span><span class="tag t-must">must-do</span></div>
         </div>
       </div>
       <div class="slot">
-        <div class="slot-time">13:00</div>
+        <div class="slot-time">14:00</div>
         <div class="slot-icon" style="background:#fdecd8">🍹</div>
         <div class="slot-content">
           <div class="slot-title">Obed – TukáTulá Beach Bar</div>
-          <div class="slot-desc">Priamo na pláži – tapas, čerstvé morské plody, koktaily s výhľadom na surferov. (4.3★ · 870 recenzií, #2 v Ribeira Grande). REZERVUJ 2 DNI VOPRED: tukatulabar@gmail.com · +351 296 477 647</div>
+          <div class="slot-desc">Priamo na pláži – tapas, čerstvé morské plody, koktaily s výhľadom na surferov. (4.3★ · 870 recenzií). REZERVUJ 2 DNI VOPRED: tukatulabar@gmail.com · +351 296 477 647</div>
           <div class="tag-row"><span class="tag t-food">jedlo</span><span class="tag t-must">must-do</span></div>
         </div>
       </div>
@@ -682,7 +683,7 @@
         <div class="slot-icon" style="background:#dde8f5">🌄</div>
         <div class="slot-content">
           <div class="slot-title">Miradouro de Santa Iria</div>
-          <div class="slot-desc">Výhľad na sever, dramatické clify s hortenziami.</div>
+          <div class="slot-desc">Výhľad na sever, dramatické clify s hortenziami. Na trase späť do Ponta Delgada.</div>
           <div class="tag-row"><span class="tag t-views">výhľad</span></div>
         </div>
       </div>
@@ -695,53 +696,54 @@
           <div class="tag-row"><span class="tag t-food">jedlo</span></div>
         </div>
       </div>
+      <div class="tip-box"><strong>Tip:</strong> Všetko na severe ostrova – Janela do Inferno, Gorreana aj Santa Bárbara sú do 15 min od seba. Plynulý deň bez krúženia.</div>
     </div>
   </div>
-
+ 
   <!-- DAY 7 -->
   <div class="day-card" id="d7">
     <div class="day-header" onclick="toggle('d7')">
       <div class="day-num dn-7">7</div>
       <div class="day-titles">
-        <div class="day-name">27. júla (pondelok) · Posledný deň</div>
-        <div class="day-theme">nákupy · posledná pláž · západ</div>
+        <div class="day-name">27. júla (pondelok) · Posledný výlet</div>
+        <div class="day-theme">Pico do Carvão · Salto do Cabrito · Caloura</div>
       </div>
       <div class="day-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
     </div>
     <div class="day-body">
       <div class="slot">
-        <div class="slot-time">9:00</div>
+        <div class="slot-time">8:00</div>
         <div class="slot-icon" style="background:#dde8f5">🏔</div>
         <div class="slot-content">
           <div class="slot-title">Miradouro do Pico do Carvão</div>
-          <div class="slot-desc">Panoráma stredu ostrova – krátka zastávka.</div>
+          <div class="slot-desc">Krátka zastávka cestou – panoráma celého stredu ostrova. Priamo na trase z Ponta Delgada na Termas das Caldeiras.</div>
           <div class="tag-row"><span class="tag t-views">výhľad</span></div>
         </div>
       </div>
       <div class="slot">
-        <div class="slot-time">10:30</div>
-        <div class="slot-icon" style="background:#dde8f5">🌿</div>
+        <div class="slot-time">8:45</div>
+        <div class="slot-icon" style="background:#ddf0e4">🥾</div>
         <div class="slot-content">
-          <div class="slot-title">Miradouro da Grota do Inferno</div>
-          <div class="slot-desc">Dramatický výhľad do zelenej „Pekelnej tiesňavy".</div>
-          <div class="tag-row"><span class="tag t-views">výhľad</span><span class="tag t-nature">príroda</span></div>
+          <div class="slot-title">Trek – Salto do Cabrito</div>
+          <div class="slot-desc">PRC29 SMI – vodopád cez tunely a akvadukty. ~2,5 hod, ľahký až stredný. Začína pri Termas das Caldeiras.</div>
+          <div class="tag-row"><span class="tag t-nature">príroda</span><span class="tag t-views">výhľad</span><span class="tag t-must">must-do</span></div>
         </div>
       </div>
       <div class="slot">
         <div class="slot-time">12:00</div>
-        <div class="slot-icon" style="background:#fdecd8">🛍</div>
+        <div class="slot-icon" style="background:#d6f0f5">🌊</div>
         <div class="slot-content">
-          <div class="slot-title">Obed & nákupy – Ponta Delgada</div>
-          <div class="slot-desc">Mercado da Graça – obed priamo na trhu (čerstvé suroviny, lokálny syr, čorizos). Potom nákupy: čaj Gorreana, ginjeinha, Biscoitos víno.</div>
-          <div class="tag-row"><span class="tag t-food">jedlo</span><span class="tag t-culture">kultúra</span></div>
+          <div class="slot-title">Caloura – prírodné bazény & obed</div>
+          <div class="slot-desc">Malá skrytá zálivka na juhu ostrova – lávové bazény priamo pri mori, jedna z najkrajších polôh na São Miguel. Reštaurácia Caloura vedľa s terasou nad vodou – posledný obed s výhľadom na Atlantik.</div>
+          <div class="tag-row"><span class="tag t-swim">kúpanie</span><span class="tag t-food">jedlo</span><span class="tag t-nature">príroda</span></div>
         </div>
       </div>
       <div class="slot">
         <div class="slot-time">15:00</div>
-        <div class="slot-icon" style="background:#ddf0e4">🏖</div>
+        <div class="slot-icon" style="background:#d6f0f5">🏖</div>
         <div class="slot-content">
           <div class="slot-title">Praia de Água de Alto</div>
-          <div class="slot-desc">Jedna z najlepších piesočnatých pláží ostrova. Posledné kúpanie.</div>
+          <div class="slot-desc">Posledné kúpanie – najlepšia piesočnatá pláž ostrova, 5 min od Caloura.</div>
           <div class="tag-row"><span class="tag t-swim">kúpanie</span></div>
         </div>
       </div>
@@ -750,16 +752,96 @@
         <div class="slot-icon" style="background:#fdecd8">🍷</div>
         <div class="slot-content">
           <div class="slot-title">Varenie doma – záverečný večer</div>
-          <div class="slot-desc">Posledný večer doma, rozlúčkový toast s lokálnym vínom z Biscoitos.</div>
+          <div class="slot-desc">Posledný večer doma s vínom z Biscoitos.</div>
           <div class="tag-row"><span class="tag t-food">jedlo</span></div>
         </div>
       </div>
-      <div class="tip-box"><strong>28. júla:</strong> Pokojné ráno, odchod na letisko. Let o 14:00 → odporúčame byť na letisku o 12:00.</div>
+      <div class="tip-box"><strong>28. júla:</strong> Pokojné ráno, odchod na letisko o 12:00. Let o 14:00.</div>
     </div>
   </div>
-
+ 
 </main>
-
+ 
+<div style="max-width:700px;margin:0 auto;padding:0 1.5rem 4rem;">
+ 
+  <div style="border-top:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem;"></div>
+  <h2 style="font-size:18px;font-weight:500;margin-bottom:0.25rem;color:var(--color-text-primary);">Rezervácie vopred</h2>
+  <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;">Toto si vybav ešte z domu, ideálne hneď ako máš letenky.</p>
+ 
+  <div style="display:flex;flex-direction:column;gap:10px;">
+ 
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="background:#fce8e8;color:#7a1a1a;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap;margin-top:2px;">DEŇ 4 · 24. júla</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Cozido das Furnas – Tony's Restaurant</div>
+          <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6;">Rezervuj min. 1 deň vopred, ideálne týždeň vopred. Stew sa vaří v zemi cez noc – bez rezervácie ho nemusia mať.<br>
+          📧 restaurantetonys@gmail.com &nbsp;·&nbsp; 📞 +351 296 584 290<br>
+          Adresa: Largo do Teatro 5, Furnas</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="background:#fce8e8;color:#7a1a1a;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap;margin-top:2px;">DEŇ 3 · 23. júla</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Caldeira Velha – termálne bazény</div>
+          <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6;">Rezervuj časové okno (1,5 hod) vopred – v júli sa míňajú rýchlo. Nelze kúpiť na dnešný deň, len na nasledujúci a ďalej.<br>
+          🌐 <a href="https://parquesnaturais.azores.gov.pt/bilheteira/caldeiravelha/?lang=en" style="color:var(--color-text-info);">parquesnaturais.azores.gov.pt</a><br>
+          💶 10€ dospelý (kúpanie) · 3€ len prehliadka · Otvorené 9:00–20:30 (máj–sep)</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="background:#fce8e8;color:#7a1a1a;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap;margin-top:2px;">DEŇ 3 · 23. júla</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Lagoa do Fogo – kyvadlová doprava</div>
+          <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6;">15. jún – 30. sep: súkromné autá zakázané 9:00–19:00. Treba shuttle bus alebo prísť pred 9:00.<br>
+          TIP: Príď pred 9:00 vlastným autom – zaparkuješ zadarmo a ideš bez čakania. Alebo kúp lístok online.<br>
+          🌐 <a href="https://lagoadofogo.pt" style="color:var(--color-text-info);">lagoadofogo.pt</a> &nbsp;·&nbsp; 💶 5€/osoba (deti do 6 r. zadarmo)<br>
+          Parkovisko pri Caldeira Velha – 101 miest, zadarmo</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="background:#fce8e8;color:#7a1a1a;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap;margin-top:2px;">DEŇ 6 · 26. júla</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">TukáTulá Beach Bar</div>
+          <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6;">Rezervuj min. 2 dni vopred (high season). Ak nemáš rezerváciu, dostaneš buzzer a čakáš pri bare – ale v júli radšej vopred.<br>
+          📧 tukatulabar@gmail.com &nbsp;·&nbsp; 📞 +351 296 477 647<br>
+          Otvorené každý deň 10:00–22:00</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;">
+      <div style="display:flex;align-items:flex-start;gap:12px;">
+        <div style="background:#e8f5ed;color:#1a5020;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;white-space:nowrap;margin-top:2px;">DEŇ 5 · 25. júla</div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px;">Hike with rescued donkeys – už rezervované ✓</div>
+          <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6;">9:30–11:30 · Organizuje Bethany · Potvrdené</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 16px;margin-top:4px;">
+      <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6;">
+        <strong style="color:var(--color-text-primary);">Ďalšie užitočné kontakty</strong><br>
+        🏊 Poça da Dona Beija (Furnas) – otvorené do 23:00, vstup ~8€, bez rezervácie<br>
+        🌿 Parque da Grená (Furnas) – vstup 10€/os, bez rezervácie<br>
+        🌋 Fumarolas Lagoa das Furnas – vstup 3€/os, otvorené 9:00–18:00 (po zatvorení zadarmo)<br>
+        🫏 Surf škola Santa Bárbara – k dispozícii priamo na pláži, bez rezervácie
+      </div>
+    </div>
+ 
+  </div>
+</div>
+ 
 <script>
   function toggle(id) {
     const card = document.getElementById(id);
@@ -768,3 +850,4 @@
 </script>
 </body>
 </html>
+ 
